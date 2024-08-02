@@ -4,6 +4,7 @@ import cors from "cors"
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 import connectDB from "./utils/db.js";
+import userRoutes from "./routes/user.route.js"
 
 
 const app = express();
@@ -21,13 +22,12 @@ const corsOption = {
 app.use(cors(corsOption));
 
 
-app.get("/",(req,res)=>{
-    res.send("Hello World");
-})
+app.use("/api/user",userRoutes);
 
-const PORT = 3000;
 
-app.listen(PORT,()=>{
-    console.log(`SERVER running at port ${3000}`)
+
+
+app.listen(3003,()=>{
+    console.log(`SERVER running at port ${3003}`)
     connectDB();
 })
